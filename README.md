@@ -49,6 +49,46 @@ The experimental setup was as follows:
 ````
 python main.py --dataset cifar10 -a resnet32 --num_classes 10 --imbanlance_rate 0.01 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.0 --label_weighting 1.2 --contrast_weight 4
 ````
+## Overview
 [figure_3method1.pdf](https://github.com/fhqxa/lzy_HCKC/files/13304999/figure_3method1.pdf)
 
 ![image](https://github.com/fhqxa/lzy_HCKC/assets/36149734/3d486754-f1d0-4636-a948-0efd1a69e518)
+
+
+### Preparing Datasets
+Download the datasets CIFAR-10, CIFAR-100, ImageNet, and iNaturalist18 to GLMC-2023/data. The directory should look like
+
+````
+GLMC-2023/data
+├── CIFAR-100-python
+├── CIFAR-10-batches-py
+├── ImageNet
+|   └── train
+|   └── val
+├── train_val2018
+└── data_txt
+    └── ImageNet_LT_val.txt
+    └── ImageNet_LT_train.txt
+    └── iNaturalist18_train.txt
+    └── iNaturalist18_val.txt
+    
+````
+## Training
+
+for CIFAR-10-LT
+````
+python main.py --dataset cifar10 -a resnet32 --num_classes 10 --imbanlance_rate 0.01 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.0 --label_weighting 1.2 --contrast_weight 1
+
+python main.py --dataset cifar10 -a resnet32 --num_classes 10 --imbanlance_rate 0.02 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.0 --label_weighting 1.2 --contrast_weight 1
+
+python main.py --dataset cifar10 -a resnet32 --num_classes 10 --imbanlance_rate 0.1 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.2 --label_weighting 1  --contrast_weight 2
+````
+
+for CIFAR-100-LT
+````
+python main.py --dataset cifar100 -a resnet32 --num_classes 100 --imbanlance_rate 0.01 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.0 --label_weighting 1.2  --contrast_weight 4
+
+python main.py --dataset cifar100 -a resnet32 --num_classes 100 --imbanlance_rate 0.02 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.2  --label_weighting 1.2  --contrast_weight 6
+
+python main.py --dataset cifar100 -a resnet32 --num_classes 100 --imbanlance_rate 0.1 --beta 0.5 --lr 0.01 --epochs 200 -b 64 --momentum 0.9 --weight_decay 5e-3 --resample_weighting 0.2  --label_weighting 1.2  --contrast_weight 4
+````
